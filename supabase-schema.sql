@@ -55,6 +55,11 @@ EXECUTE FUNCTION public.handle_updated_at();
 -- 5. ROW LEVEL SECURITY (RLS) POLICIES
 -- ==============================================================================
 
+-- Grant schema & table permissions to anon and authenticated roles
+GRANT USAGE ON SCHEMA public TO anon, authenticated;
+GRANT SELECT ON public.products TO anon;
+GRANT ALL ON public.products TO authenticated;
+
 -- Enable RLS on the products table
 ALTER TABLE public.products ENABLE ROW LEVEL SECURITY;
 

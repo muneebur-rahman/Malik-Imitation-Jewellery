@@ -23,14 +23,20 @@ export const AdminProducts = () => {
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [productToDelete, setProductToDelete] = useState(null);
   const [deleting, setDeleting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const loadProducts = async () => {
     setLoading(true);
+    setErrorMessage("");
     try {
-      const { data } = await productService.getProducts({ activeOnly: false });
+      const { data, error } = await productService.getProducts({ activeOnly: false });
+      if (error) {
+        setErrorMessage(error);
+      }
       setProducts(data || []);
     } catch (e) {
       console.error(e);
+      setErrorMessage(e.message || "Failed to load products.");
     } finally {
       setLoading(false);
     }
@@ -78,6 +84,27 @@ export const AdminProducts = () => {
       title="Product Catalog Management"
       subtitle="View, edit, toggle visibility, and delete products from your storefront"
     >
+      {/* Error Alert */}
+      {errorMessage && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.75rem",
+            padding: "1rem 1.25rem",
+            backgroundColor: "#FEE2E2",
+            border: "1px solid #FCA5A5",
+            color: "#B91C1C",
+            borderRadius: "8px",
+            marginBottom: "1.5rem",
+            fontSize: "0.9rem",
+          }}
+        >
+          <AlertCircle size={18} />
+          <span>{errorMessage}</span>
+        </div>
+      )}
+
       {/* Action Bar */}
       <div className="admin-actions-bar">
         <div className="action-bar-left">

@@ -14,17 +14,18 @@ export const isSupabaseConfigured = Boolean(
 );
 
 export const supabase = isSupabaseConfigured
-  ? createClient(supabaseUrl, supabaseAnonKey, {
-      auth: {
-        persistSession: true,
-        autoRefreshToken: true,
-      },
-    })
+  ? (globalThis.__supabaseInstance =
+      globalThis.__supabaseInstance ||
+      createClient(supabaseUrl, supabaseAnonKey, {
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true,
+        },
+      }))
   : null;
 
 if (!isSupabaseConfigured) {
-  console.info(
-    "%c[Malik Imitation Jewellery] Supabase is not yet configured. The website is operating in local catalog & demo mode. Follow the SUPABASE_SETUP.md guide to connect your real Supabase instance.",
-    "color: #C5A059; font-weight: bold; font-size: 12px;"
+  console.warn(
+    "[Malik Imitation Jewellery] Supabase credentials missing. Please define VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file."
   );
 }

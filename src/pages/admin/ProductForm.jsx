@@ -124,7 +124,7 @@ export const ProductForm = () => {
         if (uploadResult.url) {
           finalImageUrl = uploadResult.url;
         } else {
-          console.warn("Upload warning:", uploadResult.error);
+          throw new Error(uploadResult.error || "Image upload to Supabase Storage failed.");
         }
       }
 
