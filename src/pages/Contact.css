@@ -1,0 +1,230 @@
+.contact-page {
+  padding-bottom: 5rem;
+}
+
+.contact-hero-section {
+  background: linear-gradient(180deg, var(--color-cream-base) 0%, var(--color-cream-light) 100%);
+  padding: 4rem 0 4.5rem;
+  border-bottom: 1px solid var(--color-cream-border);
+}
+
+.contact-hero-title {
+  color: var(--color-dark-bg);
+  margin-top: 0.5rem;
+}
+
+.contact-hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Contact Main Grid */
+.contact-main-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: flex-start;
+}
+
+.contact-intro {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+
+.quick-action-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-bottom: 2.25rem;
+}
+
+.quick-action-btn {
+  font-size: 0.85rem;
+  padding: 0.75rem;
+}
+
+/* Cards Stack */
+.info-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-cream-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.contact-card:hover {
+  border-color: var(--color-gold-border);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-cream-base);
+  border: 1px solid var(--color-gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-heading {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--color-dark-bg);
+  margin-bottom: 0.4rem;
+}
+
+.card-bold-text {
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 0.2rem;
+}
+
+.card-text {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.card-code {
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  color: var(--color-gold-dark);
+}
+
+.phone-links-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.phone-call-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--color-cream-light);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-cream-border);
+  transition: all var(--transition-fast);
+}
+
+.phone-call-row:hover {
+  border-color: var(--color-dark-bg);
+  background-color: #FFFFFF;
+}
+
+.phone-val {
+  font-weight: 600;
+  color: var(--color-dark-bg);
+  font-size: 0.92rem;
+}
+
+.phone-badge {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  background-color: var(--color-gold-light);
+  color: var(--color-gold-dark);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+}
+
+/* Composer Box */
+.whatsapp-composer-box {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-cream-border);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-lg);
+  position: sticky;
+  top: 100px;
+}
+
+.composer-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-cream-border);
+  margin-bottom: 1.5rem;
+}
+
+.composer-crest {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--color-whatsapp);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-whatsapp);
+}
+
+.composer-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--color-dark-bg);
+  margin-bottom: 0.25rem;
+}
+
+.composer-sub {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.composer-submit-btn {
+  margin-top: 0.5rem;
+  padding: 0.9rem;
+}
+
+.composer-footer-note {
+  font-size: 0.78rem;
+  color: var(--color-text-light);
+  text-align: center;
+  margin-top: 1rem;
+  line-height: 1.4;
+}
+
+/* Map Frame */
+.map-frame-box {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-cream-border);
+}
+
+@media (max-width: 960px) {
+  .contact-main-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .whatsapp-composer-box {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .quick-action-strip {
+    grid-template-columns: 1fr;
+  }
+}

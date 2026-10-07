@@ -1,0 +1,439 @@
+/* ==========================================================================
+   MALIK IMITATION JEWELLERY - LUXURY DESIGN SYSTEM
+   Palette: Ivory, Rich Onyx, Warm Charcoal, Champagne Gold, Emerald WhatsApp
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Ivory & Creams */
+  --color-cream-light: #FDFBF7;
+  --color-cream-base: #F8F5EE;
+  --color-cream-subtle: #F2ECE0;
+  --color-cream-border: #E8E0D2;
+
+  /* Color Palette - Charcoals & Onyx */
+  --color-dark-bg: #111111;
+  --color-dark-surface: #1A1A1A;
+  --color-dark-elevated: #242424;
+  --color-dark-border: #333333;
+  --color-text-main: #1C1917;
+  --color-text-muted: #666059;
+  --color-text-light: #948B7F;
+  --color-text-white: #FFFFFF;
+
+  /* Color Palette - Champagne Gold */
+  --color-gold-light: #EBD8B2;
+  --color-gold-base: #C5A059;
+  --color-gold-dark: #A6823B;
+  --color-gold-glow: rgba(197, 160, 89, 0.2);
+  --color-gold-border: rgba(197, 160, 89, 0.35);
+
+  /* WhatsApp Brand Color */
+  --color-whatsapp: #25D366;
+  --color-whatsapp-dark: #128C7E;
+  --color-whatsapp-glow: rgba(37, 211, 102, 0.25);
+
+  /* Status Colors */
+  --color-success: #15803D;
+  --color-success-bg: #DCFCE7;
+  --color-warning: #B45309;
+  --color-warning-bg: #FEF3C7;
+  --color-danger: #B91C1C;
+  --color-danger-bg: #FEE2E2;
+
+  /* Typography */
+  --font-serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(28, 25, 23, 0.05);
+  --shadow-md: 0 4px 12px rgba(28, 25, 23, 0.06), 0 1px 2px rgba(28, 25, 23, 0.04);
+  --shadow-lg: 0 12px 28px rgba(28, 25, 23, 0.09), 0 4px 10px rgba(28, 25, 23, 0.05);
+  --shadow-xl: 0 20px 40px rgba(28, 25, 23, 0.12);
+  --shadow-gold: 0 8px 24px rgba(197, 160, 89, 0.22);
+  --shadow-whatsapp: 0 8px 20px rgba(37, 211, 102, 0.32);
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream-light);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Typography Utilities */
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+}
+
+p {
+  color: var(--color-text-muted);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+/* Luxury Accent Details */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-gold-dark);
+  margin-bottom: 0.75rem;
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 1px;
+  background-color: var(--color-gold-base);
+}
+
+.gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem auto;
+}
+
+.gold-divider::before,
+.gold-divider::after {
+  content: "";
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-base), transparent);
+}
+
+/* Button System */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 0.925rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Primary Dark Luxury Button */
+.btn-primary {
+  background-color: var(--color-dark-bg);
+  color: var(--color-text-white);
+  border-color: var(--color-dark-bg);
+}
+
+.btn-primary:hover {
+  background-color: #262626;
+  border-color: #262626;
+  box-shadow: var(--shadow-md);
+}
+
+/* Gold Button */
+.btn-gold {
+  background: linear-gradient(135deg, #D5B169 0%, #C5A059 50%, #A6823B 100%);
+  color: #111111;
+  font-weight: 600;
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #E0C07B 0%, #D0AB63 50%, #B58F44 100%);
+  box-shadow: 0 10px 28px rgba(197, 160, 89, 0.35);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text-main);
+  border: 1px solid var(--color-cream-border);
+  background-color: #FFFFFF;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-gold-base);
+  color: var(--color-gold-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+/* WhatsApp Conversion Button */
+.btn-whatsapp {
+  background-color: var(--color-whatsapp);
+  color: #FFFFFF;
+  border-color: var(--color-whatsapp);
+  font-weight: 600;
+  box-shadow: var(--shadow-whatsapp);
+}
+
+.btn-whatsapp:hover {
+  background-color: #20BA5A;
+  border-color: #20BA5A;
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.45);
+}
+
+/* Outline Dark */
+.btn-outline-dark {
+  background: transparent;
+  color: var(--color-dark-bg);
+  border: 1px solid var(--color-dark-bg);
+}
+
+.btn-outline-dark:hover {
+  background: var(--color-dark-bg);
+  color: var(--color-text-white);
+}
+
+/* Phone / Call Button */
+.btn-phone {
+  background-color: #FFFFFF;
+  color: var(--color-text-main);
+  border: 1px solid #D6CEBE;
+}
+
+.btn-phone:hover {
+  border-color: var(--color-dark-bg);
+  background-color: var(--color-cream-base);
+}
+
+/* Sizes */
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+.btn-lg {
+  padding: 0.95rem 2rem;
+  font-size: 1.05rem;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.badge-gold {
+  background-color: var(--color-cream-subtle);
+  color: var(--color-gold-dark);
+  border: 1px solid var(--color-gold-border);
+}
+
+.badge-in-stock {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.badge-out-of-stock {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+
+/* Cards & Surfaces */
+.luxury-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-cream-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.luxury-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-gold-border);
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 0.4rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-cream-border);
+  background-color: #FFFFFF;
+  color: var(--color-text-main);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-gold-base);
+  box-shadow: 0 0 0 3px var(--color-gold-glow);
+}
+
+/* Floating WhatsApp Button */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: var(--color-whatsapp);
+  color: #FFFFFF;
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-whatsapp);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.floating-whatsapp:hover {
+  background-color: #20BA5A;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.45);
+}
+
+@media (max-width: 640px) {
+  .floating-whatsapp span {
+    display: none;
+  }
+  .floating-whatsapp {
+    padding: 0.9rem;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    border-radius: 50%;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease forwards;
+}

@@ -1,0 +1,95 @@
+.catalog-page {
+  padding-bottom: 5rem;
+}
+
+.catalog-hero-header {
+  background: linear-gradient(180deg, var(--color-cream-base) 0%, var(--color-cream-light) 100%);
+  border-bottom: 1px solid var(--color-cream-border);
+  padding: 2.5rem 0 3.5rem;
+}
+
+.catalog-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.catalog-breadcrumb a {
+  color: var(--color-text-main);
+  transition: color var(--transition-fast);
+}
+
+.catalog-breadcrumb a:hover {
+  color: var(--color-gold-dark);
+}
+
+.catalog-breadcrumb span {
+  color: var(--color-gold-dark);
+  font-weight: 600;
+}
+
+.catalog-hero-text {
+  max-width: 720px;
+}
+
+.catalog-page-title {
+  color: var(--color-dark-bg);
+  margin-bottom: 0.75rem;
+}
+
+.catalog-page-desc {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.catalog-body {
+  padding-top: 3rem;
+  padding-bottom: 3.5rem;
+}
+
+/* Bottom CTA Banner */
+.catalog-cta-container {
+  margin-top: 2rem;
+}
+
+.catalog-bottom-banner {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-gold-border);
+  border-radius: var(--radius-xl);
+  padding: 2.75rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: var(--shadow-md);
+  flex-wrap: wrap;
+}
+
+.bottom-banner-content {
+  max-width: 600px;
+}
+
+.bottom-banner-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--color-dark-bg);
+  margin-bottom: 0.5rem;
+}
+
+.bottom-banner-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .catalog-bottom-banner {
+    padding: 2rem 1.5rem;
+    flex-direction: column;
+    text-align: center;
+  }
+}

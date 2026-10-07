@@ -1,0 +1,102 @@
+.category-luxury-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px solid var(--color-cream-border);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  background-color: var(--color-dark-bg);
+}
+
+.category-luxury-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-gold-border);
+  box-shadow: var(--shadow-xl);
+}
+
+.category-card-image-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.category-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.category-luxury-card:hover .category-card-img {
+  transform: scale(1.08);
+}
+
+.category-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 18, 18, 0.15) 0%,
+    rgba(18, 18, 18, 0.6) 45%,
+    rgba(18, 18, 18, 0.95) 100%
+  );
+}
+
+.category-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.category-card-crest {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.category-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.category-card-desc {
+  font-size: 0.88rem;
+  color: #D6CEBE;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.category-explore-btn {
+  font-size: 0.85rem;
+  padding: 0.6rem 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .category-luxury-card {
+    height: 340px;
+  }
+  .category-card-content {
+    padding: 1.5rem 1.25rem;
+  }
+}
