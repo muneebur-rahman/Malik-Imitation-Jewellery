@@ -17,7 +17,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE IF NOT EXISTS public.products (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name TEXT NOT NULL,
-    slug TEXT,
+    slug TEXT UNIQUE,
     category TEXT NOT NULL CHECK (category IN ('Jewellery', 'Cosmetics', 'Bags')),
     sub_category TEXT,
     price NUMERIC(10, 2) DEFAULT NULL,
@@ -254,4 +254,4 @@ VALUES
     TRUE,
     TRUE
 )
-ON CONFLICT DO NOTHING;
+ON CONFLICT (slug) DO NOTHING;

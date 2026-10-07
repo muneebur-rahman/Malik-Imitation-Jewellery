@@ -8,18 +8,15 @@ import {
   LogOut,
   Menu,
   X,
-  Database,
   Sparkles,
-  Info,
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import "./AdminLayout.css";
 
 export const AdminLayout = ({ children, title, subtitle }) => {
-  const { user, logout, isSupabaseConfigured, isDemoMode } = useAuth();
+  const { user, logout, isSupabaseConfigured } = useAuth();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showConfigModal, setShowConfigModal] = useState(false);
 
   const handleLogout = async () => {
     await logout();
@@ -63,19 +60,13 @@ export const AdminLayout = ({ children, title, subtitle }) => {
             {isSupabaseConfigured ? (
               <span className="backend-status-pill status-connected" title="Connected to Supabase Database & Storage">
                 <span className="status-dot green"></span>
-                <span>Supabase Cloud</span>
+                <span>Supabase Live</span>
               </span>
             ) : (
-              <button
-                type="button"
-                onClick={() => setShowConfigModal(true)}
-                className="backend-status-pill status-demo"
-                title="Click to view Supabase connection setup instructions"
-              >
+              <span className="backend-status-pill status-demo" title="Add credentials to .env">
                 <span className="status-dot amber"></span>
-                <span>Demo Storage</span>
-                <Info size={13} />
-              </button>
+                <span>.env Missing</span>
+              </span>
             )}
 
             <Link to="/" target="_blank" className="admin-view-site-link" title="Open Public Website">
@@ -137,7 +128,7 @@ export const AdminLayout = ({ children, title, subtitle }) => {
                 {user?.email || "Shop Admin"}
               </span>
               <span className="user-role">
-                {isDemoMode ? "Demo Mode" : "Supabase Authenticated"}
+                Supabase Authenticated
               </span>
             </div>
           </div>
@@ -204,59 +195,6 @@ export const AdminLayout = ({ children, title, subtitle }) => {
           {children}
         </main>
       </div>
-
-      {/* Supabase Info Modal (if user clicks Demo mode pill) */}
-      {showConfigModal && (
-        <div className="admin-modal-backdrop" onClick={() => setShowConfigModal(false)}>
-          <div className="admin-modal-card" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header">
-              <div className="modal-icon-badge">
-                <Database size={22} className="text-gold" />
-              </div>
-              <div>
-                <h3 className="modal-title">Supabase Database Connection</h3>
-                <p className="modal-subtitle">Ready to connect to your live database</p>
-              </div>
-              <button
-                type="button"
-                className="modal-close-btn"
-                onClick={() => setShowConfigModal(false)}
-              >
-                <X size={20} />
-              </button>
-            </div>
-
-            <div className="modal-body">
-              <p>
-                The website is currently running with local browser storage. Any products
-                you add or edit are preserved and visible across the website right now.
-              </p>
-              <p className="mt-3">
-                <strong>To connect your live Supabase cloud database:</strong>
-              </p>
-              <ol className="modal-steps-list">
-                <li>Create a free account at <strong>supabase.com</strong></li>
-                <li>Create a new project (e.g. <em>malik-jewellery</em>)</li>
-                <li>Run the provided <code>supabase-schema.sql</code> script in the Supabase SQL Editor</li>
-                <li>Add your Project URL and Anon Key to your <code>.env</code> file</li>
-              </ol>
-              <div className="modal-note-box">
-                A complete step-by-step beginner guide with exact SQL is available in the project files.
-              </div>
-            </div>
-
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-primary btn-sm"
-                onClick={() => setShowConfigModal(false)}
-              >
-                Got It
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

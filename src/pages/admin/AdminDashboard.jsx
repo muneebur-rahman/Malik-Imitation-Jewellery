@@ -64,16 +64,12 @@ export const AdminDashboard = () => {
           <div className="banner-left">
             <Database size={20} className="text-gold" />
             <div>
-              <strong>Currently using Local Browser Storage</strong>
+              <strong>Supabase Connection Required</strong>
               <p>
-                Products added and edited here are saved immediately on this browser.
-                To sync across all phones and devices permanently, connect Supabase following the setup guide.
+                Add your <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> to your <code>.env</code> file to load and manage live products.
               </p>
             </div>
           </div>
-          <Link to="/admin/products/new" className="btn btn-gold btn-sm">
-            <span>Test Adding Product</span>
-          </Link>
         </div>
       )}
 

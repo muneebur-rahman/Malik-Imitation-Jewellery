@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { Lock, Mail, ArrowRight, Sparkles, Shield, AlertCircle, ArrowLeft } from "lucide-react";
+import { Lock, Mail, ArrowRight, Sparkles, AlertCircle, ArrowLeft, Database } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import "./AdminLogin.css";
 
@@ -10,7 +10,7 @@ export const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const { login, isSupabaseConfigured, isDemoMode } = useAuth();
+  const { login, isSupabaseConfigured } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -26,18 +26,13 @@ export const AdminLogin = () => {
       if (res.success) {
         navigate(from, { replace: true });
       } else {
-        setErrorMsg(res.error || "Invalid login credentials. Please try again.");
+        setErrorMsg(res.error || "Invalid login credentials. Please check your Supabase user.");
       }
     } catch (err) {
       setErrorMsg("An unexpected error occurred during sign in.");
     } finally {
       setLoading(false);
     }
-  };
-
-  const fillDemoCredentials = () => {
-    setEmail("admin@malikjewellery.com");
-    setPassword("admin123");
   };
 
   return (
@@ -48,31 +43,20 @@ export const AdminLogin = () => {
           <div className="login-crest">
             <Sparkles size={24} className="text-gold" />
           </div>
-          <span className="login-tag">Shop Management</span>
+          <span className="login-tag">Shop Management Portal</span>
           <h1 className="login-title">Malik Imitation Jewellery</h1>
           <p className="login-desc">
-            Sign in to manage product catalog, update prices, and upload new arrivals.
+            Sign in with your Supabase shop owner credentials to manage products, prices, and upload new arrivals.
           </p>
         </div>
 
-        {/* Demo Mode Notice */}
-        {isDemoMode && (
-          <div className="demo-login-alert">
-            <div className="demo-alert-header">
-              <Shield size={16} className="text-gold" />
-              <strong>Demo Admin Mode</strong>
-            </div>
-            <p className="demo-alert-text">
-              Supabase credentials are not yet configured in <code>.env</code>.
-              You can test the admin panel immediately using demo credentials:
-            </p>
-            <button
-              type="button"
-              onClick={fillDemoCredentials}
-              className="btn btn-secondary btn-sm fill-demo-btn"
-            >
-              Fill Demo Credentials (admin@malikjewellery.com)
-            </button>
+        {/* Configuration Warning if .env missing */}
+        {!isSupabaseConfigured && (
+          <div className="login-error-banner" style={{ backgroundColor: "#FFFBEB", borderColor: "#FCD34D", color: "#B45309" }}>
+            <Database size={16} />
+            <span>
+              Supabase credentials not detected. Add <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> to your <code>.env</code> file.
+            </span>
           </div>
         )}
 
@@ -115,7 +99,7 @@ export const AdminLogin = () => {
                 id="admin-password"
                 type="password"
                 className="form-input"
-                placeholder="Enter password"
+                placeholder="Enter your Supabase admin password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -129,7 +113,7 @@ export const AdminLogin = () => {
             className="btn btn-primary btn-full btn-lg login-submit-btn"
             disabled={loading}
           >
-            <span>{loading ? "Authenticating..." : "Sign In to Admin"}</span>
+            <span>{loading ? "Authenticating with Supabase..." : "Sign In to Admin"}</span>
             <ArrowRight size={17} />
           </button>
         </form>
