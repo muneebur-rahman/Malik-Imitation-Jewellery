@@ -8,13 +8,17 @@ import {
   Clock,
   Lock,
   Sparkles,
+  Mail,
 } from "lucide-react";
 import { InstagramIcon } from "./InstagramIcon";
+import { LinkedInIcon } from "./LinkedInIcon";
 import { BUSINESS_CONFIG } from "../../config/business";
+import { DEVELOPER_CONFIG } from "../../config/developer";
 import "./Footer.css";
 
+const currentYear = new Date().getFullYear();
+
 export const Footer = () => {
-  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="site-footer">
@@ -153,10 +157,59 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Admin Portal */}
+        {/* Elegant Website Services CTA - Immediately above copyright strip */}
+        <div className="footer-dev-cta">
+          <div className="dev-cta-main">
+            <div className="dev-cta-badge">
+              <Sparkles size={12} className="dev-badge-icon" />
+              <span>{DEVELOPER_CONFIG.cta.badge}</span>
+            </div>
+            <div className="dev-cta-text-group">
+              <h4 className="dev-cta-title">{DEVELOPER_CONFIG.cta.heading}</h4>
+              <p className="dev-cta-subtitle">{DEVELOPER_CONFIG.cta.subheading}</p>
+            </div>
+          </div>
+
+          <div className="dev-cta-actions">
+            <a
+              href={DEVELOPER_CONFIG.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="dev-btn dev-btn-whatsapp"
+              aria-label="Chat with web developer Muneebur Rahman on WhatsApp (opens in new tab)"
+            >
+              <MessageCircle size={15} />
+              <span>WhatsApp Me</span>
+            </a>
+            <a
+              href={DEVELOPER_CONFIG.emailUrl}
+              className="dev-btn dev-btn-email"
+              aria-label="Send an email to web developer Muneebur Rahman"
+            >
+              <Mail size={15} />
+              <span>Email Me</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Bottom Bar: Copyright, Developer Credit & Admin Portal */}
         <div className="footer-bottom-bar">
           <p className="copyright-text">
             © {currentYear} {BUSINESS_CONFIG.name}. All rights reserved. Kamptee, Maharashtra.
+          </p>
+
+          <p className="developer-credit-text">
+            Website crafted by{" "}
+            <a
+              href={DEVELOPER_CONFIG.linkedInUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="developer-credit-link"
+              aria-label="Muneebur Rahman on LinkedIn (opens in new tab)"
+            >
+              <span>{DEVELOPER_CONFIG.name}</span>
+              <LinkedInIcon size={12} className="developer-linkedin-icon" />
+            </a>
           </p>
 
           <div className="footer-bottom-links">
