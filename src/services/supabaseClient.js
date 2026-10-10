@@ -13,11 +13,11 @@ export const isSupabaseConfigured = Boolean(
     supabaseAnonKey.length > 20
 );
 
-// In local development, route through Vite proxy if running on localhost to resolve new subdomains reliably
+// In local development, route through Vite dev server proxy to avoid local ISP/router DNS resolution issues
 const activeUrl =
   import.meta.env.DEV &&
   typeof window !== "undefined" &&
-  window.location?.origin?.includes("localhost")
+  Boolean(window.location?.origin)
     ? `${window.location.origin}/supabase-proxy`
     : rawUrl;
 

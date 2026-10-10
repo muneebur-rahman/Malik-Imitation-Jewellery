@@ -45,15 +45,11 @@
   color: #FFFFFF;
 }
 
-.admin-brand-crest {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  background: #242220;
-  border: 1px solid var(--color-gold-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.admin-brand-logo-img {
+  height: 34px;
+  width: auto;
+  max-width: 60px;
+  object-fit: contain;
 }
 
 .admin-brand-name {

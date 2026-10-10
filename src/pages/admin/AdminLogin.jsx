@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { Lock, Mail, ArrowRight, Sparkles, AlertCircle, ArrowLeft, Database } from "lucide-react";
+import { Lock, Mail, ArrowRight, AlertCircle, ArrowLeft, Database, WifiOff } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import "./AdminLogin.css";
 
@@ -8,7 +8,7 @@ export const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorInfo, setErrorInfo] = useState({ message: "", type: "" });
 
   const { login, isSupabaseConfigured } = useAuth();
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ export const AdminLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMsg("");
+    setErrorInfo({ message: "", type: "" });
     setLoading(true);
 
     try {
@@ -26,10 +26,16 @@ export const AdminLogin = () => {
       if (res.success) {
         navigate(from, { replace: true });
       } else {
-        setErrorMsg(res.error || "Invalid login credentials. Please check your Supabase user.");
+        setErrorInfo({
+          message: res.error || "Invalid login credentials. Please check your Supabase user.",
+          type: res.errorType || "auth",
+        });
       }
-    } catch (err) {
-      setErrorMsg("An unexpected error occurred during sign in.");
+    } catch (_err) {
+      setErrorInfo({
+        message: "An unexpected error occurred during sign in. Please try again.",
+        type: "unknown",
+      });
     } finally {
       setLoading(false);
     }
@@ -40,8 +46,12 @@ export const AdminLogin = () => {
       <div className="admin-login-card">
         {/* Top Header */}
         <div className="login-header text-center">
-          <div className="login-crest">
-            <Sparkles size={24} className="text-gold" />
+          <div className="login-logo-wrap">
+            <img
+              src="/logo.png"
+              alt="Malik Imitation Jewellery Logo"
+              className="login-logo-img"
+            />
           </div>
           <span className="login-tag">Shop Management Portal</span>
           <h1 className="login-title">Malik Imitation Jewellery</h1>
@@ -61,10 +71,27 @@ export const AdminLogin = () => {
         )}
 
         {/* Error message */}
-        {errorMsg && (
-          <div className="login-error-banner">
-            <AlertCircle size={16} />
-            <span>{errorMsg}</span>
+        {errorInfo.message && (
+          <div
+            className={`login-error-banner ${
+              errorInfo.type === "network" ? "banner-network-error" : ""
+            }`}
+          >
+            {errorInfo.type === "network" ? (
+              <WifiOff size={18} className="banner-icon" />
+            ) : (
+              <AlertCircle size={18} className="banner-icon" />
+            )}
+            <div className="banner-content">
+              <strong className="banner-title">
+                {errorInfo.type === "network"
+                  ? "Network Connection Error"
+                  : errorInfo.type === "config"
+                  ? "Configuration Missing"
+                  : "Authentication Error"}
+              </strong>
+              <p className="banner-desc">{errorInfo.message}</p>
+            </div>
           </div>
         )}
 

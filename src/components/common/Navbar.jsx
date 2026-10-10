@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { MessageCircle, Menu, X, Phone, MapPin, Sparkles } from "lucide-react";
+import { MessageCircle, Menu, X, Phone, MapPin } from "lucide-react";
 import { BUSINESS_CONFIG } from "../../config/business";
 import "./Navbar.css";
 
@@ -61,9 +61,11 @@ export const Navbar = () => {
         <div className="container header-container">
           {/* Logo / Brand Name */}
           <Link to="/" className="brand-logo" aria-label="Malik Imitation Jewellery Home">
-            <div className="brand-crest">
-              <Sparkles size={20} className="crest-icon" />
-            </div>
+            <img
+              src="/logo.png"
+              alt="Malik Imitation Jewellery Logo"
+              className="brand-logo-img"
+            />
             <div className="brand-text">
               <span className="brand-title">MALIK</span>
               <span className="brand-subtitle">IMITATION JEWELLERY</span>
@@ -118,9 +120,16 @@ export const Navbar = () => {
         <div className={`mobile-drawer ${isOpen ? "drawer-open" : ""}`}>
           <div className="drawer-inner">
             <div className="drawer-header">
-              <div className="brand-text">
-                <span className="brand-title">MALIK</span>
-                <span className="brand-subtitle">IMITATION JEWELLERY • KAMPTEE</span>
+              <div className="drawer-brand">
+                <img
+                  src="/logo.png"
+                  alt="Malik Imitation Jewellery Logo"
+                  className="drawer-logo-img"
+                />
+                <div className="brand-text">
+                  <span className="brand-title">MALIK</span>
+                  <span className="brand-subtitle">IMITATION JEWELLERY • KAMPTEE</span>
+                </div>
               </div>
               <button
                 type="button"

@@ -8,19 +8,42 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const supabaseUrl = env.VITE_SUPABASE_URL || 'https://rtumumhgmxkdnjvtwkwz.supabase.co'
 
-  // Custom DNS lookup agent in case local router DNS has not propagated newly created subdomains
+  // Public DNS resolver to handle ISP/router DNS resolution issues for supabase.co subdomains
+  const publicResolver = new dns.Resolver()
+  publicResolver.setServers(['8.8.8.8', '1.1.1.1', '8.8.4.4'])
+
   const customLookup = (hostname, opts, cb) => {
     if (typeof opts === 'function') {
       cb = opts
       opts = {}
     }
-    if (hostname.includes('supabase.co')) {
-      if (opts && opts.all) {
-        return cb(null, [{ address: '172.64.149.246', family: 4 }])
+
+    dns.lookup(hostname, opts, (err, address, family) => {
+      if (!err && address) {
+        return cb(null, address, family)
       }
-      return cb(null, '172.64.149.246', 4)
-    }
-    dns.lookup(hostname, opts, cb)
+
+      // If local DNS lookup failed, resolve through public DNS servers with Cloudflare fallback
+      if (hostname.includes('supabase.co')) {
+        publicResolver.resolve4(hostname, (resErr, addresses) => {
+          const ips =
+            !resErr && addresses && addresses.length
+              ? addresses
+              : ['172.64.149.246', '104.18.38.10']
+
+          if (opts && opts.all) {
+            return cb(
+              null,
+              ips.map((ip) => ({ address: ip, family: 4 }))
+            )
+          }
+          return cb(null, ips[0], 4)
+        })
+        return
+      }
+
+      cb(err, address, family)
+    })
   }
 
   const agent = new https.Agent({ lookup: customLookup })

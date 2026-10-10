@@ -8,7 +8,6 @@ import {
   LogOut,
   Menu,
   X,
-  Sparkles,
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import "./AdminLayout.css";
@@ -45,9 +44,11 @@ export const AdminLayout = ({ children, title, subtitle }) => {
             </button>
 
             <Link to="/admin" className="admin-brand-link">
-              <div className="admin-brand-crest">
-                <Sparkles size={16} className="text-gold" />
-              </div>
+              <img
+                src="/logo.png"
+                alt="Malik Imitation Jewellery Logo"
+                className="admin-brand-logo-img"
+              />
               <div>
                 <span className="admin-brand-name">MALIK</span>
                 <span className="admin-panel-tag">ADMIN PORTAL</span>

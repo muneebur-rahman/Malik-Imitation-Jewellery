@@ -43,7 +43,9 @@ export const AuthProvider = ({ children }) => {
     if (!isSupabaseConfigured || !supabase) {
       return {
         success: false,
-        error: "Supabase connection missing. Please add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to your .env file.",
+        errorType: "config",
+        error:
+          "Supabase credentials not configured. Please define VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file.",
       };
     }
 
@@ -54,12 +56,54 @@ export const AuthProvider = ({ children }) => {
       });
 
       if (error) {
-        return { success: false, error: error.message };
+        const errorMsg = error.message || "";
+        const isNetwork =
+          errorMsg.toLowerCase().includes("failed to fetch") ||
+          errorMsg.toLowerCase().includes("networkerror") ||
+          errorMsg.toLowerCase().includes("network request failed") ||
+          error.name === "AuthRetryableFetchError";
+
+        if (isNetwork) {
+          return {
+            success: false,
+            errorType: "network",
+            error:
+              "Unable to reach the Supabase server (Network / Fetch Error). Please check your internet connection and verify that your Supabase project is active.",
+          };
+        }
+
+        let friendlyMessage = errorMsg;
+        if (errorMsg.toLowerCase().includes("invalid login credentials")) {
+          friendlyMessage =
+            "Invalid email or password. Please verify your admin credentials in the Supabase Auth dashboard.";
+        } else if (errorMsg.toLowerCase().includes("email not confirmed")) {
+          friendlyMessage =
+            "Email address is not confirmed yet. Please verify your email or disable confirmation in Supabase Auth settings.";
+        }
+
+        return {
+          success: false,
+          errorType: "auth",
+          error: friendlyMessage,
+        };
       }
 
       return { success: true, user: data.user };
     } catch (err) {
-      return { success: false, error: err.message || "Failed to sign in." };
+      const errorMsg = err?.message || "";
+      const isNetwork =
+        errorMsg.toLowerCase().includes("failed to fetch") ||
+        errorMsg.toLowerCase().includes("networkerror") ||
+        errorMsg.toLowerCase().includes("network request failed") ||
+        err?.name === "AuthRetryableFetchError";
+
+      return {
+        success: false,
+        errorType: isNetwork ? "network" : "auth",
+        error: isNetwork
+          ? "Unable to reach the Supabase server (Network / Fetch Error). Please check your internet connection and verify that your Supabase project is active."
+          : errorMsg || "Failed to sign in. Please try again.",
+      };
     }
   };
 

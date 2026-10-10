@@ -28,9 +28,11 @@ export const Footer = () => {
           {/* Col 1: Business Identity */}
           <div className="footer-col brand-col">
             <div className="footer-logo">
-              <div className="footer-crest">
-                <Sparkles size={18} className="text-gold" />
-              </div>
+              <img
+                src="/logo.png"
+                alt="Malik Imitation Jewellery Logo"
+                className="footer-logo-img"
+              />
               <div>
                 <h3 className="footer-brand-title">MALIK</h3>
                 <span className="footer-brand-subtitle">
