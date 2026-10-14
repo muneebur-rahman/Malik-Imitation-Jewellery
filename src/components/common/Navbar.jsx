@@ -46,8 +46,8 @@ export const Navbar = () => {
             <span className="phone-summary">
               <Phone size={13} className="text-gold" />
               Call:{" "}
-              <a href="tel:+918668703440" className="phone-link">
-                +91 86687 03440
+              <a href="tel:+918282818076" className="phone-link">
+                +91 82828 18076
               </a>
             </span>
             <span className="bar-separator">•</span>
@@ -167,7 +167,7 @@ export const Navbar = () => {
                 className="btn btn-whatsapp btn-full"
               >
                 <MessageCircle size={20} />
-                <span>Order on WhatsApp (8668703440)</span>
+                <span>Order on WhatsApp (8282818076)</span>
               </a>
 
               <div className="drawer-phone-links">

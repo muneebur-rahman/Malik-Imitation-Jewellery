@@ -32,17 +32,17 @@ export const BUSINESS_CONFIG = {
   // Calling Phone Numbers
   phoneNumbers: [
     { number: "9595947246", display: "+91 95959 47246", tel: "+919595947246" },
-    { number: "8282818076", display: "+91 82828 18076", tel: "+918282818076" },
-    { number: "8668703440", display: "+91 86687 03440", tel: "+918668703440", isPrimary: true },
+    { number: "8282818076", display: "+91 82828 18076", tel: "+918282818076", isPrimary: true },
+    { number: "8668703440", display: "+91 86687 03440", tel: "+918668703440" },
   ],
 
-  // Primary WhatsApp details (All WhatsApp orders MUST use 8668703440)
+  // Primary WhatsApp details (All WhatsApp orders MUST use 8282818076)
   whatsapp: {
-    rawNumber: "8668703440",
+    rawNumber: "8282818076",
     countryCode: "91",
-    fullNumber: "918668703440",
-    display: "+91 86687 03440",
-    baseUrl: "https://wa.me/918668703440",
+    fullNumber: "918282818076",
+    display: "+91 82828 18076",
+    baseUrl: "https://wa.me/918282818076",
   },
 
   // Social Channels
@@ -91,12 +91,12 @@ export const BUSINESS_CONFIG = {
   getWhatsAppProductUrl: (productName, category, price) => {
     const priceText = price ? ` (Price: ₹${price})` : "";
     const message = `Hi, I am interested in this product from Malik Imitation Jewellery.\n\nProduct: ${productName}${priceText}\nCategory: ${category || "General"}\n\nPlease share availability and details.`;
-    return `https://wa.me/918668703440?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/918282818076?text=${encodeURIComponent(message)}`;
   },
 
   getWhatsAppGeneralUrl: (customText) => {
     const defaultText = "Hi Malik Imitation Jewellery! I would like to enquire about your latest jewellery, cosmetics, and bag collections.";
     const message = customText || defaultText;
-    return `https://wa.me/918668703440?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/918282818076?text=${encodeURIComponent(message)}`;
   },
 };

@@ -9,7 +9,7 @@
 ## 🌟 Core Highlights
 
 - **Business Philosophy:** Product discovery & WhatsApp conversion boutique (no complicated online payment or checkout walls).
-- **Primary WhatsApp Number:** `+91 86687 03440` (Centralized configuration in [`src/config/business.js`](./src/config/business.js)).
+- **Primary WhatsApp Number:** `+91 82828 18076` (Centralized configuration in [`src/config/business.js`](./src/config/business.js)).
 - **Location:** 659V+4WH, Gujri Bazar, Near Jama Masjid, Kamptee, Maharashtra 441001.
 - **Phone Numbers:** `9595947246`, `8282818076`, `8668703440`.
 - **Design System:** Bespoke Ivory/Cream, Rich Onyx Charcoal, and Champagne Gold luxury styling with Google Fonts (`Cormorant Garamond` & `Plus Jakarta Sans`).
@@ -33,7 +33,7 @@ Category: [CATEGORY]
 Please share availability and details.
 ```
 
-- WhatsApp URL: `https://wa.me/918668703440?text=...`
+- WhatsApp URL: `https://wa.me/918282818076?text=...`
 - Primary Call: Clickable `tel:` links for all 3 store phone numbers.
 - Google Maps: One-tap directions to the physical shop in Gujri Bazar, Kamptee.
 

@@ -25,7 +25,7 @@ export const Contact = () => {
       message || "I would like to enquire about your products and visit your store."
     }`;
 
-    const url = `https://wa.me/918668703440?text=${encodeURIComponent(
+    const url = `https://wa.me/918282818076?text=${encodeURIComponent(
       formattedMessage
     )}`;
     window.open(url, "_blank");
@@ -69,15 +69,15 @@ export const Contact = () => {
                   className="btn btn-whatsapp quick-action-btn"
                 >
                   <MessageCircle size={18} />
-                  <span>WhatsApp (8668703440)</span>
+                  <span>WhatsApp (8282818076)</span>
                 </a>
 
                 <a
-                  href="tel:+918668703440"
+                  href="tel:+918282818076"
                   className="btn btn-primary quick-action-btn"
                 >
                   <Phone size={18} />
-                  <span>Call Primary (+91 86687 03440)</span>
+                  <span>Call Primary (+91 82828 18076)</span>
                 </a>
 
                 <a
@@ -231,7 +231,7 @@ export const Contact = () => {
                     className="btn btn-whatsapp btn-full btn-lg composer-submit-btn"
                   >
                     <Send size={18} />
-                    <span>Send via WhatsApp (+91 86687 03440)</span>
+                    <span>Send via WhatsApp (+91 82828 18076)</span>
                   </button>
 
                   <p className="composer-footer-note">

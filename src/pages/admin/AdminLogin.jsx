@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import { Lock, Mail, ArrowRight, AlertCircle, ArrowLeft, Database, WifiOff } from "lucide-react";
+import { AlertCircle, ArrowLeft, ArrowRight, Database, Lock, Mail, WifiOff } from "lucide-react";
+import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import "./AdminLogin.css";
 
@@ -56,7 +56,7 @@ export const AdminLogin = () => {
           <span className="login-tag">Shop Management Portal</span>
           <h1 className="login-title">Malik Imitation Jewellery</h1>
           <p className="login-desc">
-            Sign in with your Supabase shop owner credentials to manage products, prices, and upload new arrivals.
+            Sign in with shop owner credentials to manage products, prices, and upload new arrivals.
           </p>
         </div>
 
@@ -73,9 +73,8 @@ export const AdminLogin = () => {
         {/* Error message */}
         {errorInfo.message && (
           <div
-            className={`login-error-banner ${
-              errorInfo.type === "network" ? "banner-network-error" : ""
-            }`}
+            className={`login-error-banner ${errorInfo.type === "network" ? "banner-network-error" : ""
+              }`}
           >
             {errorInfo.type === "network" ? (
               <WifiOff size={18} className="banner-icon" />
@@ -87,8 +86,8 @@ export const AdminLogin = () => {
                 {errorInfo.type === "network"
                   ? "Network Connection Error"
                   : errorInfo.type === "config"
-                  ? "Configuration Missing"
-                  : "Authentication Error"}
+                    ? "Configuration Missing"
+                    : "Authentication Error"}
               </strong>
               <p className="banner-desc">{errorInfo.message}</p>
             </div>

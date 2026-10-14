@@ -132,7 +132,7 @@ Once your `.env` is configured:
 
      Please share availability and details.
      ```
-   - Target number: `+91 86687 03440` (Primary WhatsApp).
+   - Target number: `+91 82828 18076` (Primary WhatsApp).
 
 ---
 

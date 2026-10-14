@@ -235,7 +235,7 @@ export const ProductDetails = () => {
                 <strong>WhatsApp Order System</strong>
                 <p>
                   Clicking the button below directly connects you with Malik Imitation
-                  Jewellery (+91 86687 03440). We will confirm current availability and
+                  Jewellery (+91 82828 18076). We will confirm current availability and
                   assist you right away.
                 </p>
               </div>
@@ -256,7 +256,7 @@ export const ProductDetails = () => {
 
               <div className="secondary-action-row">
                 <a
-                  href="tel:+918668703440"
+                  href="tel:+918282818076"
                   className="btn btn-secondary call-cta-btn"
                   title="Call shop directly"
                 >

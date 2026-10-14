@@ -410,7 +410,7 @@ export const Home = () => {
                 </a>
 
                 <a
-                  href="tel:+918668703440"
+                  href="tel:+918282818076"
                   className="btn btn-secondary"
                 >
                   <Phone size={18} />
@@ -459,7 +459,7 @@ export const Home = () => {
                 className="btn btn-whatsapp btn-lg"
               >
                 <MessageCircle size={20} />
-                <span>Chat on WhatsApp (+91 86687 03440)</span>
+                <span>Chat on WhatsApp (+91 82828 18076)</span>
               </a>
             </div>
           </div>
